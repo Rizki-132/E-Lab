@@ -43,7 +43,10 @@
                         <td>{{ $lab->matakuliah }}</td>
                         <td>{{ $lab->keadaan_unit}}</td>
                         <td>{{ $lab->saran }}</td>
-                        <td></td>
+                        <td>
+                            <button type="button" class="btn btn-primary">cek Detail</button>
+                            <button type="button" class="btn btn-danger">Hapus</button>
+                        </td>
                     </tr>
                     @endforeach
                  </tbody>
