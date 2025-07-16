@@ -23,7 +23,7 @@ Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.stor
 Auth::routes();
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'is_admin'])->group(function () {
    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/print', [AdminController::class, 'print'])->name('admin.print');
 

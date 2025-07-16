@@ -41,10 +41,16 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                         @if (Route::has('password.request'))
+                                            <a class="small" href="{{ route('password.request') }}">
+                                                {{ __('Lupa Password') }}
+                                            </a>
+                                        @endif
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                         @if (Route::has('register'))
+                                                <a class="small" href="{{ route('register') }}">{{ __('Membuat Akun') }}</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
