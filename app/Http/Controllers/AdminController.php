@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Laporan;
 use Yajra\DataTables\Facades\DataTables;
-
+use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
      public function __construct()
@@ -31,5 +31,20 @@ class AdminController extends Controller
     {
         $reports = Laporan::all();
         return view('admin.print', compact('reports'));
+    }
+
+    public function destroy($id)
+    {
+        $laporan = Laporan::findOrFail($id);
+
+        // Hapus file foto dari storage
+        if ($laporan->foto && file_exists(public_path($laporan->foto))) {
+        unlink(public_path($laporan->foto));
+        }
+
+        // Hapus data dari database
+        $laporan->delete();
+
+        return redirect()->route('admin.dashboard')->with('success', 'Data dan foto berhasil dihapus.');
     }
 }

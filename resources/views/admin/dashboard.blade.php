@@ -44,8 +44,12 @@
                         <td>{{ $lab->keadaan_unit}}</td>
                         <td>{{ $lab->saran }}</td>
                         <td>
-                            <button type="button" class="btn btn-primary">cek Detail</button>
-                            <button type="button" class="btn btn-danger">Hapus</button>
+                           <form id="formDelete{{ $lab->id }}" action="{{ route('admin.delete', $lab->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-primary btn-sm">cek Detail</button>
+                                <button type="button" onclick="confirmDelete({{ $lab->id }})" class="btn btn-danger btn-sm">Hapus</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
@@ -57,9 +61,31 @@
 
 @endsection
 @push('scripts')
-<script>
+<<script>
     $(document).ready(function () {
-        $('#dataTable').DataTable();
+        $('#dataTable').DataTable({
+            dom: 'Bfrtip', // B = Buttons
+            buttons: [
+                'copy', 'excel', 'csv', 'pdf', 'print'
+            ]
+        });
     });
 </script>
 @endpush
+<script>
+function confirmDelete(id) {
+    Swal.fire({
+        title: 'Yakin ingin menghapus?',
+        text: "Data akan dihapus secara permanen.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, hapus!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('formDelete' + id).submit();
+        }
+    });
+}
+</script>

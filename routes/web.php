@@ -28,5 +28,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/print', [AdminController::class, 'print'])->name('admin.print');
 
      Route::get('/admin/laporan/data', [AdminController::class, 'dataLaporan'])->name('admin.laporan.data');
+     Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
