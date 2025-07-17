@@ -37,6 +37,6 @@ class LaporanController extends Controller
         }
 
         Laporan::create($validated);
-        return back()->with('success', 'Data berhasil dikirim.');
+        return redirect()->route('terimakasih')->with('success', 'Data berhasil dikirim.');
     }
 }

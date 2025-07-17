@@ -19,6 +19,9 @@ use App\Http\Controllers\AdminController;
 // });
 Route::get('/', [LaporanController::class, 'create']);
 Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.store');
+Route::get('/terimakasih', function () {
+    return view('terimakasih');
+})->name('terimakasih');
 
 Auth::routes();
 Auth::routes();
