@@ -27,6 +27,12 @@ class AdminController extends Controller
                 ->make(true);
         }
     }
+    public function show($id)
+    {
+        $report = Laporan::findOrFail($id);
+        return view('admin.show', compact('report'));
+    }
+
     public function print()
     {
         $reports = Laporan::all();

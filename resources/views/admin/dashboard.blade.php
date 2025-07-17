@@ -47,7 +47,7 @@
                            <form id="formDelete{{ $lab->id }}" action="{{ route('admin.delete', $lab->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-primary btn-sm">cek Detail</button>
+                                <a href="{{ route('admin.laporan.show', $lab->id) }}" class="btn btn-primary btn-sm">Detail</a>
                                 <button type="button" onclick="confirmDelete({{ $lab->id }})" class="btn btn-danger btn-sm">Hapus</button>
                             </form>
                         </td>

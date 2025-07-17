@@ -29,7 +29,7 @@ Auth::routes();
 Route::middleware(['auth', 'is_admin'])->group(function () {
    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/print', [AdminController::class, 'print'])->name('admin.print');
-
+     Route::get('/admin/laporan/{id}', [AdminController::class, 'show'])->name('admin.laporan.show');
      Route::get('/admin/laporan/data', [AdminController::class, 'dataLaporan'])->name('admin.laporan.data');
      Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
 });
