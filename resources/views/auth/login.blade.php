@@ -27,6 +27,13 @@
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" name="password"
                                                 id="exampleInputPassword" placeholder="Password">
+                                            
+                                        </div>
+                                          <div class="form-group">
+                                            <div class="small">
+                                               <input  id="exampleInputPassword" type="checkbox" onclick="showHide()">
+                                                <label >Tampilkan</label>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -61,6 +68,5 @@
             </div>
 
         </div>
-
     </div>
 @endsection

@@ -95,7 +95,6 @@
                                         <label for="file">Upload Foto Unit</label>
                                         <div class="input-group mb-3">
                                             <input type="file" class="form-control" id="inputGroupFile02" name="foto">
-                                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
                                         </div>
                                         <label for="">Masukan Saran</label>
                                         <div class="input-group">

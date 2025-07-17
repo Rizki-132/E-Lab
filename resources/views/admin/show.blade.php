@@ -25,6 +25,6 @@
         </tr>
         <tr><th>Saran</th><td>{{ $report->saran }}</td></tr>
     </table>
-    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">Kembali</a>
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-success">Kembali</a>
 </div>
 @endsection

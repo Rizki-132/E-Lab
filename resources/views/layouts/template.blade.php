@@ -35,6 +35,16 @@
     <!-- Custom scripts for all pages-->
     <script src="assets/js/sb-admin-2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function showHide() {
+        var inputan = document.getElementById("exampleInputPassword");
+        if (inputan.type === "password") {
+            inputan.type = "text";
+        } else {
+            inputan.type = "password";
+        }
+    } 
+    </script>
 
 @if(session('success'))
     <script>
