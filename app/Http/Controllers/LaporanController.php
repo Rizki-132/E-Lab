@@ -9,7 +9,7 @@ class LaporanController extends Controller
 {
     public function create()
     {
-        return view('form');
+        return view('mahasiswa.form');
     }
 
     public function store(Request $request)
@@ -37,6 +37,6 @@ class LaporanController extends Controller
         }
 
         Laporan::create($validated);
-        return redirect()->route('terimakasih')->with('success', 'Data berhasil dikirim.');
+        return redirect()->route('mahasiswa.terimakasih')->with('success', 'Data berhasil dikirim.');
     }
 }

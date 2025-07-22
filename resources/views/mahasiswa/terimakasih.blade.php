@@ -18,6 +18,7 @@
                                     <p>Data Anda telah berhasil dikirim.</p>
                                 </div>
                                     <hr>
+                                    <a href="{{route('mahasiswa.form')}}" class="btn btn-primary">Kembali</a>
                                 </div>
                             </div>
                         </div>

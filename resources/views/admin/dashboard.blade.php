@@ -44,7 +44,7 @@
                         <td>{{ $lab->keadaan_unit}}</td>
                         <td>{{ $lab->saran }}</td>
                         <td>
-                           <form id="formDelete{{ $lab->id }}" action="{{ route('admin.delete', $lab->id) }}" method="POST">
+                           <form id="formDelete{{ $lab->id }}" action="{{ route('admin.laporan.delete', $lab->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <a href="{{ route('admin.laporan.show', $lab->id) }}" class="btn btn-primary btn-sm">Detail</a>
