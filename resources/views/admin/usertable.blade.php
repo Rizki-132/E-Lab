@@ -35,7 +35,12 @@
                             <form id="formDelete{{ $item->id }}" action="{{ route('admin.destroyUser', $item->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" onclick="confirmDelete({{ $item->id }})" class="btn btn-danger btn-sm">Hapus</button>
+                                @if($item->role === 'admin')
+                                     <button class="btn btn-danger btn-sm" disabled>Hapus</button>
+                                @else
+                                    <button type="button" onclick="confirmDelete({{ $item->id }})" class="btn btn-danger btn-sm">Hapus</button>
+                                @endif
+                                {{-- <button type="button" onclick="confirmDelete({{ $item->id }})" class="btn btn-danger btn-sm">Hapus</button> --}}
                             </form>
                         </td>
                     </tr>

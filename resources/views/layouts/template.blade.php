@@ -43,7 +43,7 @@
         } else {
             inputan.type = "password";
         }
-    } 
+    }
     </script>
 
 @if(session('success'))

@@ -31,9 +31,9 @@
             <div class="form-group">
                 <label>Role</label>
                 <select name="role" class="form-control" required>
-                    <option value="admin">Admin</option>
                     <option value="siswa">Siswa</option>
                     <option value="user">User</option>
+                    <option value="admin">Admin</option>
                 </select>
             </div>
 
@@ -41,7 +41,7 @@
             <a href="{{route('admin.tabelUser')}}" class="btn btn-warning">Kembali</a>
         </form>
     </div>
-</div> 
+</div>
 
 @endsection
 
