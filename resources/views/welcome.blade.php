@@ -32,6 +32,9 @@
                     <!-- To make this form functional, sign up at-->
                     <!-- https://startbootstrap.com/solution/contact-forms-->
                     <!-- to get an API token!-->
+                    <div>
+                        <a href="{{ route('login') }}" class="btn btn-success">Get Started</a>
+                    </div>
                 </div>
             </div>
         </div>
