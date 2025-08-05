@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Laporan;
+use Carbon\Carbon;
 use App\Models\user;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Models\LoginLog; 
 
 class AdminController extends Controller
 {
@@ -16,10 +19,46 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
     
-    public function dashboard()
+   public function dashboard()
+    {
+        $totalUsers = User::count(); // Semua akun
+        $totalSiswa = User::where('role', 'siswa')->count(); // Akun siswa saja
+        $totalLogin = LoginLog::count(); // Jumlah total login
+
+        $users = User::paginate(4);
+        $reports = Laporan::latest()->get();
+        $totalSaran = Laporan::whereNotNull('saran')->where('saran', '!=', '')->count();
+
+        return view('admin.dashboard', compact('totalUsers', 'totalSiswa', 'totalLogin', 'users','reports','totalSaran'));
+    }
+
+    // Untuk ChartJs
+   public function chartLoginData()
+    {
+        $logins = collect();
+        $labels = collect();
+
+        for ($i = 6; $i >= 0; $i--) {
+            $date = Carbon::today()->subDays($i);
+            $count = User::where('role', 'siswa')
+                        ->whereDate('last_login_at', $date)
+                        ->count();
+            $labels->push($date->format('d M'));
+            $logins->push($count);
+        }
+
+        return response()->json([
+            'labels' => $labels,
+            'data' => $logins
+        ]);
+    }
+
+// Untuk Fungsi Admin
+
+    public function tabelkunjungan()
     {
         $reports = Laporan::latest()->get();
-        return view('admin.dashboard', compact('reports'));
+        return view('admin.tabelkunjungan', compact('reports'));
     }
     public function dataLaporan(Request $request)
     {
@@ -54,7 +93,7 @@ class AdminController extends Controller
         // Hapus data dari database
         $laporan->delete();
 
-        return redirect()->route('admin.dashboard')->with('success', 'Data dan foto berhasil dihapus.');
+        return redirect()->route('admin.tabelkunjungan')->with('success', 'Data dan foto berhasil dihapus.');
     }
 
     // Untuk User

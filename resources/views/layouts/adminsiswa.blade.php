@@ -57,7 +57,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('admin.dashboard')}}">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -80,8 +80,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pilihan Menu</h6>
-                        <a class="collapse-item" href="{{route('admin.tabelkunjungan')}}">Tabel Kehadiran</a>
-                        <a class="collapse-item" href="{{route('admin.tabelUser')}}">User</a>
+                        <a class="collapse-item" href="#">Materi</a>
+                        <a class="collapse-item" href="#">Info Unit</a>
                         <!-- <a class="collapse-item" href="cards.html">Cards</a> -->
                     </div>
                 </div>
@@ -190,7 +190,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-               @include('layouts/navigasi')
+               @include('layouts/navsiswa')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->

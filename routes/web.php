@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardMahasiswaController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::middleware(['auth'])->get('/redirect', function () {
     if ($role === 'admin') {
         return redirect()->route('admin.dashboard');
     } elseif ($role === 'siswa') {
-        return redirect()->route('mahasiswa.form');
+        return redirect()->route('mahasiswa.dashboard-siswa');
     } else {
         abort(403, 'Akses ditolak.');
     }
@@ -33,20 +34,23 @@ Route::middleware(['auth'])->get('/redirect', function () {
 
 
 Route::middleware(['auth', 'is_admin'])->group(function () {
-   Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/chart-login-data', [AdminController::class, 'chartLoginData'])->name('admin.chartLoginData');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/tabelkunjungan', [AdminController::class, 'tabelkunjungan'])->name('admin.tabelkunjungan');
     Route::get('/admin/print', [AdminController::class, 'print'])->name('admin.print');
-     Route::get('/admin/laporan/{id}', [AdminController::class, 'show'])->name('admin.laporan.show');
-     Route::get('/admin/laporan/data', [AdminController::class, 'dataLaporan'])->name('admin.laporan.data');
-     Route::delete('/admin/{id}', [AdminController::class, 'destroyLaporan'])->name('admin.laporan.delete');
+    Route::get('/admin/laporan/{id}', [AdminController::class, 'show'])->name('admin.laporan.show');
+    Route::get('/admin/laporan/data', [AdminController::class, 'dataLaporan'])->name('admin.laporan.data');
+    Route::delete('/admin/{id}', [AdminController::class, 'destroyLaporan'])->name('admin.laporan.delete');
 
     //  user
-       Route::get('/usertable', [AdminController::class, 'indexUser'])->name('admin.tabelUser');
-       Route::get('/admin/create', [AdminController::class, 'createUser'])->name('admin.createUser');
-       Route::post('/admin/users', [AdminController::class, 'storeUser'])->name('admin.storeUser');
-       Route::delete('/admin/users/{id}', [AdminController::class, 'destroyUser'])->name('admin.destroyUser');
+    Route::get('/usertable', [AdminController::class, 'indexUser'])->name('admin.tabelUser');
+    Route::get('/admin/create', [AdminController::class, 'createUser'])->name('admin.createUser');
+    Route::post('/admin/users', [AdminController::class, 'storeUser'])->name('admin.storeUser');
+    Route::delete('/admin/users/{id}', [AdminController::class, 'destroyUser'])->name('admin.destroyUser');
 });
 
 Route::middleware(['auth'])->group(function(){
+    Route::get('/dashboardsiswa', [DashboardMahasiswaController::class, 'dashboardmhs'])->name('mahasiswa.dashboard-siswa');
     Route::get('/form', [LaporanController::class, 'create'])->name('mahasiswa.form');
     Route::post('/laporan', [LaporanController::class, 'store'])->name('laporan.store');
     Route::get('/terimakasih', function () {
