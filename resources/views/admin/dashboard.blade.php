@@ -21,6 +21,7 @@
                         <th>Dosen</th>
                         <th>Matakuliah</th>
                         <th>Keadaan Unit</th>
+                        <th>waktu</th>
                         <th>Saran</th>
                         <th>Action</th>
                     </tr>
@@ -42,6 +43,7 @@
                         <td>{{ $lab->dosen }}</td>
                         <td>{{ $lab->matakuliah }}</td>
                         <td>{{ $lab->keadaan_unit}}</td>
+                        <td>{{ $lab->created_at}}</td>
                         <td>{{ $lab->saran }}</td>
                         <td>
                            <form id="formDelete{{ $lab->id }}" action="{{ route('admin.laporan.delete', $lab->id) }}" method="POST">
